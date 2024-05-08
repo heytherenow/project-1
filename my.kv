@@ -1,0 +1,54 @@
+WindowManager:
+    MainWindow:
+    SecondWindow:
+
+<MainWindow>:
+    name: 'login'
+    canvas.before:
+        Color:
+            rgba: 0.329, 0.329,.329, 1
+        Rectangle:
+            pos: self.pos
+            size: self.size
+    FloatLayout:
+        Label:
+            text: '[b]Login[/b]'
+            markup: True
+            pos_hint: {'x':0,'y':.4}
+            font_size: 50
+        Label:
+            text:'[b]Username:[/b] '
+            font_size: 20
+            markup: True
+            pos_hint: {'x':-.15,'y':.1}
+        TextInput:
+            id: usern
+            multiline: False
+            size_hint: 0.25,.055
+            pos_hint: {'x':.45, 'y':.573}
+        Label:
+            text: '[b]Password:[/b] '
+            font_size: 20
+            markup: True
+            pos_hint: {'x': -.15, 'y':-.05}
+        TextInput:
+            id: passw
+            password: True
+            multiline: False
+            size_hint: 0.25,.055
+            pos_hint: {'x':.45, 'y':.423}
+        Button:
+            text:'[b]Submit[/b]'
+            markup:True
+            font_size: 20
+            background_color: (0,0,0,1)
+            size_hint: 0.4,.1
+            pos_hint: {'x':.305, 'y':.2}
+            on_release:
+                app.root.current = 'logged' if passw.text == "12345" and usern.text == 'admin' else 'login'
+                passw.text = ''
+                usern.text = ''
+<SecondWindow>:
+    name: 'logged'
+    Button:
+        text:'Back'
